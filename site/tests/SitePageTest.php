@@ -8,7 +8,7 @@ class SitePageTest extends SapphireTest
      * Defines the fixture file to use for this test class
      * @var string
      */
-    // protected static $fixture_file = 'SiteTreeTest.yml';
+    protected static $fixture_file = 'site/tests/fixturesSitePage.yml';
 
     /**
      * Test generation of the URLSegment values.
@@ -21,16 +21,13 @@ class SitePageTest extends SapphireTest
     public function testURLGeneration()
     {
         $expectedURLs = [
-            'home' => 'home',
-            'staff' => 'my-staff',
-            'about' => 'about-us',
-            'staffduplicate' => 'my-staff-2'
+            'page1' => 'page-one',
+            'page2' => 'page-two'
         ];
 
         foreach ($expectedURLs as $fixture => $urlSegment) {
-            // $obj = $this->objFromFixture('Page', $fixture);
-
-            $this->assertEquals($urlSegment, $urlSegment);
+            $obj = $this->objFromFixture('SitePage', $fixture);
+            $this->assertEquals($urlSegment, $obj->URLSegment);
         }
     }
 }
