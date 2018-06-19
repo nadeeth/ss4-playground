@@ -10,24 +10,11 @@ class SitePageTest extends SapphireTest
      */
     protected static $fixture_file = 'site/tests/fixturesSitePage.yml';
 
-    /**
-     * Test generation of the URLSegment values.
-     *
-     * Makes sure to:
-     *  - Turn things into lowercase-hyphen-format
-     *  - Generates from Title by default, unless URLSegment is explicitly set
-     *  - Resolves duplicates by appending a number
-     */
     public function testURLGeneration()
     {
-        $expectedURLs = [
-            'page1' => 'page-one',
-            'page2' => 'page-two'
-        ];
-
-        foreach ($expectedURLs as $fixture => $urlSegment) {
-            $obj = $this->objFromFixture('SitePage', $fixture);
-            $this->assertEquals($urlSegment, $obj->URLSegment);
-        }
+        $obj = $this->objFromFixture('SitePage', 'page1');
+        $this->assertEquals("page-one", $obj->URLSegment);
+        $this->assertEquals("Page One", $obj->Title);
+        $this->assertEquals("SitePage", $obj->ClassName);
     }
 }
