@@ -1,8 +1,6 @@
 <?php
 
-use SilverStripe\CMS\Model\SiteTree;
-
-class Page extends SiteTree
+class CustomPage extends Page
 {
     private static $db = [];
 
